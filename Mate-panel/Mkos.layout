@@ -1,0 +1,54 @@
+[Toplevel top]
+expand=true
+orientation=top
+size=24
+
+
+
+[Object menu]
+object-type=menu
+toplevel-id=top
+position=0
+locked=false
+
+[Object menu-bar]
+object-type=applet
+applet-iid=AppmenuAppletFactory::AppmenuApplet
+toplevel-id=top
+position=36
+locked=false
+
+[Object batery]
+object-type=applet
+applet-iid=BattstatAppletFactory::BattstatApplet
+toplevel-id=top
+position=1620
+locked=false
+
+[Object volume-control]
+object-type=applet
+applet-iid=GvcAppletFactory::GvcApplet
+toplevel-id=top
+position=15
+panel-right-stick=true
+locked=false
+
+[Object notification-area]
+object-type=applet
+applet-iid=NotificationAreaAppletFactory::NotificationArea
+toplevel-id=top
+position=25
+panel-right-stick=true
+locked=true
+
+[Object clock]
+object-type=applet
+applet-iid=ClockAppletFactory::ClockApplet
+toplevel-id=top
+position=0
+panel-right-stick=true
+locked=false
+
+
+
+

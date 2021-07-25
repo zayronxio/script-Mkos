@@ -21,6 +21,11 @@ if [ "$DISTRO" = "Description:	Ubuntu 21.04" ];
 #[en]Created required directories
 echo "Created required directories"
 mkdir $HOME/.local/Mkos
+mkdir $HOME/.local/picom
+mkdir $HOME/.icons
+mkdir $HOME/.themes
+
+
 
 #[en]Install repositories and apps
 #[es]Instalando repocitorios y apps:
@@ -30,6 +35,32 @@ echo -e $PASSWD | sudo -S apt install xfce4-docklike-plugin mate-applet-appmenu 
 
 wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/picom-ibhagwan-lasted.deb
 echo -e $PASSWD | sudo -S dpkg -i $HOME/.local/Mkos/picom-ibhagwan-lasted.deb && echo -e $PASSWD | sudo -S apt --fix-broken install
+
+
+
+
+#Added Config file of picom
+echo "Added Config file of picom"
+wget -P $HOME/.local/picom "https://github.com/zayronxio/script-Mkos/raw/master/Config Picom/picom.conf"
+
+
+##### Agregando Configs para paneles####
+echo "Config panel xfce4"
+wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/XFCEDOCK.tar.bz2 &&
+xfce4-panel-profiles load $HOME/.local/Mkos/XFCEDOCK.tar.bz2
+echo "Config panel mate"
+wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Mate-panel/Mkos.layout && echo -e $PASSWD | sudo -S mv $HOME/.local/Mkos/Mkos.layout /usr/share/mate-panel/layouts/Mkos.layout
+
+#####Agregando Iconos#######
+if zenity --question --text "You want to add mac os style icons" 
+ then
+wget -H -r --level=1 -k -p $HOME/.icons https://github.com/zayronxio/script-Mkos/raw/master/Icons/Mkos-Big-Sur
+wget -H -r --level=1 -k -p $HOME/.icons https://github.com/zayronxio/script-Mkos/raw/master/Icons/Mkos-Big-Sur-Night
+wget -H -r --level=1 -k -p $HOME/.icons https://github.com/zayronxio/script-Mkos/raw/master/Icons/Mkos-Big-Sur-Panel-white 
+else
+echo "los iconos ha sido instalados"
+ fi
+
  else 
   zenity --info \
        --title="Mkos" \
