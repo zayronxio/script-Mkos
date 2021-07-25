@@ -61,6 +61,7 @@ else
 echo "los iconos ha sido instalados"
  fi
 
+
  else 
   zenity --info \
        --title="Mkos" \
