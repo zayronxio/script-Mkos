@@ -54,9 +54,7 @@ wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Ma
 #####Agregando Iconos#######
 if zenity --question --text "You want to add mac os style icons" 
  then
-wget -H -r --level=1 -k -p $HOME/.icons https://github.com/zayronxio/script-Mkos/raw/master/Icons/Mkos-Big-Sur
-wget -H -r --level=1 -k -p $HOME/.icons https://github.com/zayronxio/script-Mkos/raw/master/Icons/Mkos-Big-Sur-Night
-wget -H -r --level=1 -k -p $HOME/.icons https://github.com/zayronxio/script-Mkos/raw/master/Icons/Mkos-Big-Sur-Panel-white 
+wget -P $HOME/.icons https://github.com/zayronxio/script-Mkos/raw/master/Icons/Mkos-Big-Sur.tar.xz && cd $HOME/.icons && tar -Jxvf Mkos-Big-Sur.tar.xz
 else
 echo "los iconos ha sido instalados"
  fi
