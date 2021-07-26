@@ -31,10 +31,12 @@ mkdir $HOME/.themes
 #[es]Instalando repocitorios y apps:
 
 echo -e $PASSWD | sudo -S add-apt-repository ppa:xubuntu-dev/staging && echo -e $PASSWD | sudo -S apt update
-echo -e $PASSWD | sudo -S apt install xfce4-docklike-plugin mate-applet-appmenu mate-applets mate-applets-common mate-panel wget
+echo -e $PASSWD | sudo -S apt install xfce4-docklike-plugin mate-applet-appmenu mate-applets mate-applets-common mate-panel wget dconf-editor
 
 wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/picom-ibhagwan-lasted.deb
 echo -e $PASSWD | sudo -S dpkg -i $HOME/.local/Mkos/picom-ibhagwan-lasted.deb && echo -e $PASSWD | sudo -S apt --fix-broken install
+wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/lightpad_0.0.8.rev1_amd64.deb
+echo -e $PASSWD | sudo -S dpkg -i $HOME/.local/Mkos/lightpad_0.0.8.rev1_amd64.deb
 
 
 
@@ -54,12 +56,29 @@ wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Ma
 #####Agregando Iconos#######
 if zenity --question --text "You want to add mac os style icons" 
  then
-wget -P $HOME/.icons https://github.com/zayronxio/script-Mkos/raw/master/Icons/Mkos-Big-Sur.tar.xz && cd $HOME/.icons && tar -Jxvf Mkos-Big-Sur.tar.xz
+wget -P $HOME/.icons https://github.com/zayronxio/script-Mkos/raw/master/Icons/Mkos-Big-Sur.tar.xz && cd $HOME/.icons && tar -Jxvf Mkos-Big-Sur.tar.xz && cd
 else
-echo "los iconos ha sido instalados"
+echo "the iconos have been installed"
  fi
+ 
+wget -P $HOME/.themes https://github.com/zayronxio/script-Mkos/raw/master/themes/BigSur-XFCE.tar.xz && cd $HOME/.themes && tar -Jxvf BigSur-XFCE.tar.xz && cd
 
+ #cambiando iconos
+echo "change icons"
+xfconf-query -c xsettings -p /Net/IconThemeName -s Mkos-BigSur
+xfconf-query -c xsettings -p /Net/ThemeName -s BigSur-XFCE
+xfconf-query --channel=xfwm4 --property=/general/use_compositing --type=bool --toggle && nohup picom &
 
+#change Mate-panel
+nohup mate-panel &
+dconf write /org/mate/panel/general/default-layout "'Mkos'"
+mate-panel --reset
+dconf write /org/mate/panel/toplevels/top/background/color "'rgba(0,0,0,0.0649882)'"
+
+#apps autostar
+wget -P $HOME/.config/autostart https://github.com/zayronxio/script-Mkos/raw/master/Autostart/picom.desktop
+wget -P $HOME/.config/autostart https://github.com/zayronxio/script-Mkos/raw/master/Autostart/mate-panel.desktop
+ 
  else 
   zenity --info \
        --title="Mkos" \
