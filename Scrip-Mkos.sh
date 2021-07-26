@@ -65,7 +65,7 @@ wget -P $HOME/.themes https://github.com/zayronxio/script-Mkos/raw/master/themes
 
  #cambiando iconos
 echo "change icons"
-xfconf-query -c xsettings -p /Net/IconThemeName -s Mkos-BigSur
+xfconf-query -c xsettings -p /Net/IconThemeName -s Mkos-Big-Sur
 xfconf-query -c xsettings -p /Net/ThemeName -s BigSur-XFCE
 xfconf-query --channel=xfwm4 --property=/general/use_compositing --type=bool --toggle && nohup picom &
 
