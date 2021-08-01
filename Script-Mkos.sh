@@ -73,6 +73,7 @@ xfconf-query --channel=xfwm4 --property=/general/use_compositing --type=bool --t
 nohup mate-panel &
 dconf write /org/mate/panel/general/default-layout "'Mkos'"
 mate-panel --reset
+sleep 3s
 dconf write /org/mate/panel/toplevels/top/background/color "'rgba(0,0,0,0.0649882)'"
 
 #apps autostar
@@ -84,12 +85,12 @@ wget -P $HOME/.config/autostart https://github.com/zayronxio/script-Mkos/raw/mas
        --title="Mkos" \
        --width=250 \
        --text="Usted esta usando una distro o un desktop no permitido"
-       fi
+      fi
          else 
-         zenity --info \
-          --title="Mkos" \
-           --width=250 \
-            --text="Usted esta usando una distro o un desktop no permitido"
-       fi
+          zenity --info \
+             --title="Mkos" \
+             --width=250 \
+             --text="Usted esta usando una distro o un desktop no permitido"
+      fi
 
 
