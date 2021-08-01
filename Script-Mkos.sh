@@ -63,10 +63,11 @@ echo "the iconos have been installed"
  
 wget -P $HOME/.themes https://github.com/zayronxio/script-Mkos/raw/master/themes/BigSur-XFCE.tar.xz && cd $HOME/.themes && tar -Jxvf BigSur-XFCE.tar.xz && cd
 
- #cambiando iconos
-echo "change icons"
+ #cambiando iconos y thema
+echo "change icons and themes"
 xfconf-query -c xsettings -p /Net/IconThemeName -s Mkos-Big-Sur
 xfconf-query -c xsettings -p /Net/ThemeName -s BigSur-XFCE
+xfconf-query -c xfwm4 -p /general/Theme -s BigSur-XFCE
 xfconf-query --channel=xfwm4 --property=/general/use_compositing --type=bool --toggle && nohup picom &
 
 #change Mate-panel
