@@ -63,6 +63,16 @@ echo "the iconos have been installed"
  
 wget -P $HOME/.themes https://github.com/zayronxio/script-Mkos/raw/master/themes/BigSur-XFCE.tar.xz && cd $HOME/.themes && tar -Jxvf BigSur-XFCE.tar.xz && cd
 
+
+#Change Thunar
+xfconf-query -c thunar -p /last-location-bar -s ThunarLocationButtons &&
+xfconf-query -c thunar -p /last-separator-position -s 180 && 
+xfconf-query -c thunar -p /last-side-pane -s ThunarShortcutsPane && 
+xfconf-query -c thunar -p /last-window-height -s 410 && 
+xfconf-query -c thunar -p /last-window-width -s 700 && 
+xfconf-query -c thunar -p /last-icon-view-zoom-level -s THUNAR_ZOOM_LEVEL_150_PERCENT &&
+thunar -q
+
  #cambiando iconos y thema
 echo "change icons and themes"
 xfconf-query -c xsettings -p /Net/IconThemeName -s Mkos-Big-Sur
@@ -76,6 +86,7 @@ dconf write /org/mate/panel/general/default-layout "'Mkos'"
 mate-panel --reset
 sleep 3s
 dconf write /org/mate/panel/toplevels/top/background/color "'rgba(0,0,0,0.0649882)'"
+
 
 #apps autostar
 wget -P $HOME/.config/autostart https://github.com/zayronxio/script-Mkos/raw/master/Autostart/picom.desktop
