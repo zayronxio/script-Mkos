@@ -34,7 +34,8 @@ echo -e $PASSWD | sudo -S add-apt-repository ppa:xubuntu-dev/staging && echo -e 
 echo -e $PASSWD | sudo -S apt install xfce4-docklike-plugin mate-applet-appmenu mate-applets mate-applets-common mate-panel wget dconf-editor
 
 wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/picom-ibhagwan-lasted.deb
-echo -e $PASSWD | sudo -S dpkg -i $HOME/.local/Mkos/picom-ibhagwan-lasted.deb && echo -e $PASSWD | sudo -S apt --fix-broken install
+echo -e $PASSWD | sudo -S dpkg -i $HOME/.local/Mkos/picom-ibhagwan-lasted.deb
+echo -e $PASSWD | sudo -S apt --fix-broken install
 wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/lightpad_0.0.8.rev1_amd64.deb
 echo -e $PASSWD | sudo -S dpkg -i $HOME/.local/Mkos/lightpad_0.0.8.rev1_amd64.deb
 
@@ -48,7 +49,7 @@ wget -P $HOME/.local/picom "https://github.com/zayronxio/script-Mkos/raw/master/
 
 ##### Agregando Configs para paneles####
 echo "Config panel xfce4"
-wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/XFCEDOCK.tar.bz2 &&
+wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/XFCEDOCK.tar.bz2
 xfce4-panel-profiles load $HOME/.local/Mkos/XFCEDOCK.tar.bz2
 echo "Config panel mate"
 wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Mate-panel/Mkos.layout && echo -e $PASSWD | sudo -S mv $HOME/.local/Mkos/Mkos.layout /usr/share/mate-panel/layouts/Mkos.layout
@@ -65,12 +66,12 @@ wget -P $HOME/.themes https://github.com/zayronxio/script-Mkos/raw/master/themes
 
 
 #Change Thunar
-xfconf-query -c thunar -p /last-location-bar -s ThunarLocationButtons &&
-xfconf-query -c thunar -p /last-separator-position -s 180 && 
-xfconf-query -c thunar -p /last-side-pane -s ThunarShortcutsPane && 
-xfconf-query -c thunar -p /last-window-height -s 410 && 
-xfconf-query -c thunar -p /last-window-width -s 700 && 
-xfconf-query -c thunar -p /last-icon-view-zoom-level -s THUNAR_ZOOM_LEVEL_150_PERCENT &&
+xfconf-query -c thunar -p /last-location-bar -s ThunarLocationButtons
+xfconf-query -c thunar -p /last-separator-position -s 180
+xfconf-query -c thunar -p /last-side-pane -s ThunarShortcutsPane 
+xfconf-query -c thunar -p /last-window-height -s 410
+xfconf-query -c thunar -p /last-window-width -s 700
+xfconf-query -c thunar -p /last-icon-view-zoom-level -s THUNAR_ZOOM_LEVEL_150_PERCENT
 thunar -q
 
  #cambiando iconos y thema
@@ -78,10 +79,11 @@ echo "change icons and themes"
 xfconf-query -c xsettings -p /Net/IconThemeName -s Mkos-Big-Sur
 xfconf-query -c xsettings -p /Net/ThemeName -s BigSur-XFCE
 xfconf-query -c xfwm4 -p /general/theme -s BigSur-XFCE
-xfconf-query --channel=xfwm4 --property=/general/use_compositing --type=bool --toggle && nohup picom &
+xfconf-query --channel=xfwm4 --property=/general/use_compositing --type=bool --toggle
+picom &
 
 #change Mate-panel
-nohup mate-panel &
+mate-panel
 dconf write /org/mate/panel/general/default-layout "'Mkos'"
 mate-panel --reset
 sleep 3s
