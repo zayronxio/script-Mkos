@@ -26,7 +26,7 @@ mkdir $HOME/.icons
 mkdir $HOME/.themes
 
 #Change Thunar
-xfconf-query -c thunar -p /last-location-bar -s ThunarLocationButtons && xfconf-query -c thunar -p /last-separator-position -s 180 && xfconf-query -c thunar -p /last-side-pane -s ThunarShortcutsPane && xfconf-query -c thunar -p /last-window-height -s 410 && xfconf-query -c thunar -p /last-window-width -s 700 && xfconf-query -c thunar -p /last-icon-view-zoom-level -s THUNAR_ZOOM_LEVEL_150_PERCENT && thunar -q
+xfconf-query -c thunar -n -p /last-separator-position -t "int" -s "180" && xfconf-query -c thunar -p /last-location-bar -s ThunarLocationButtons && xfconf-query -c thunar -n -p /last-side-pane -t "string" -s "ThunarShortcutsPane" && xfconf-query -c thunar -n -p /last-window-height -t "int" -s "410" && xfconf-query -c thunar -n -p /last-window-width -t "int" -s "918" && xfconf-query -c thunar -p /last-icon-view-zoom-level -s THUNAR_ZOOM_LEVEL_150_PERCENT && thunar -q
 
 
 #[en]Install repositories and apps
@@ -75,6 +75,7 @@ xfconf-query --channel=xfwm4 --property=/general/use_compositing --type=bool --t
 
 #change Mate-panel
 mate-panel &
+sleep 3s
 dconf write /org/mate/panel/general/default-layout "'Mkos'"
 mate-panel --reset
 sleep 3s
