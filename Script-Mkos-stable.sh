@@ -25,6 +25,8 @@ mkdir $HOME/.config/picom
 mkdir $HOME/.icons
 mkdir $HOME/.themes
 
+#Change Thunar
+xfconf-query -c thunar -p /last-location-bar -s ThunarLocationButtons && xfconf-query -c thunar -p /last-separator-position -s 180 && xfconf-query -c thunar -p /last-side-pane -s ThunarShortcutsPane && xfconf-query -c thunar -p /last-window-height -s 410 && xfconf-query -c thunar -p /last-window-width -s 700 && xfconf-query -c thunar -p /last-icon-view-zoom-level -s THUNAR_ZOOM_LEVEL_150_PERCENT && thunar -q
 
 
 #[en]Install repositories and apps
@@ -62,11 +64,7 @@ else
 echo "the iconos have been installed"
  fi
  
-wget -P $HOME/.themes https://github.com/zayronxio/script-Mkos/raw/master/themes/BigSur-XFCE.tar.xz && cd $HOME/.themes && tar -Jxvf BigSur-XFCE.tar.xz && cd
-
-
-#Change Thunar
-xfconf-query -c thunar -p /last-location-bar -s ThunarLocationButtons && xfconf-query -c thunar -p /last-separator-position -s 180 && xfconf-query -c thunar -p /last-side-pane -s ThunarShortcutsPane && xfconf-query -c thunar -p /last-window-height -s 410 && xfconf-query -c thunar -p /last-window-width -s 700 && xfconf-query -c thunar -p /last-icon-view-zoom-level -s THUNAR_ZOOM_LEVEL_150_PERCENT && thunar -q
+wget -P $HOME/.themes https://github.com/zayronxio/script-Mkos/raw/master/themes/BigSur-XFCE.tar.xz && tar -Jxvf $HOME/.themes/BigSur-XFCE.tar.xz -C $HOME/.themes
 
  #cambiando iconos y thema
 echo "change icons and themes"
@@ -74,7 +72,6 @@ xfconf-query -c xsettings -p /Net/IconThemeName -s Mkos-Big-Sur
 xfconf-query -c xsettings -p /Net/ThemeName -s BigSur-XFCE
 xfconf-query -c xfwm4 -p /general/theme -s BigSur-XFCE
 xfconf-query --channel=xfwm4 --property=/general/use_compositing --type=bool --toggle
-picom &
 
 #change Mate-panel
 mate-panel &
@@ -87,7 +84,9 @@ dconf write /org/mate/panel/toplevels/top/background/type "'color'"
 #apps autostar
 wget -P $HOME/.config/autostart https://github.com/zayronxio/script-Mkos/raw/master/Autostart/picom.desktop
 wget -P $HOME/.config/autostart https://github.com/zayronxio/script-Mkos/raw/master/Autostart/mate-panel.desktop
- 
+
+#runnin composite
+picom &
  else 
   zenity --info \
        --title="Mkos" \
