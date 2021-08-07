@@ -43,6 +43,15 @@ echo -e $PASSWD | sudo -S dpkg -i $HOME/.local/Mkos/picom-ibhagwan-lasted.deb
 echo -e $PASSWD | sudo -S apt --fix-broken install
 wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/lightpad_0.0.8.rev1_amd64.deb
 echo -e $PASSWD | sudo -S dpkg -i $HOME/.local/Mkos/lightpad_0.0.8.rev1_amd64.deb
+#
+#created Lightpad starter launcher
+#
+echo created Lightpad starter launcher
+echo -e "[Desktop Entry]\nName=Lightpad\nType=Application\nIcon=deepin-launcher\nExec=com.github.libredeb.lightpad" | cat > $HOME/.local/share/applications/Lightpad.desktop
+
+echo -e $PASSWD | sudo -S mv $HOME/.local/share/applications/Lightpad.desktop /usr/share/applications/Lightpad.desktop
+#
+chmod +x /usr/share/applications/Lightpad.desktop
 
 
 
@@ -54,10 +63,13 @@ wget -P $HOME/.config/picom "https://github.com/zayronxio/script-Mkos/raw/master
 
 ##### Agregando Configs para paneles####
 echo "Config panel xfce4"
-wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/XFCEDOCK.tar.bz2
-xfce4-panel-profiles load $HOME/.local/Mkos/XFCEDOCK.tar.bz2
+wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Paquetes/XFCEDOCK-Exp.tar.bz2
+xfce4-panel-profiles load $HOME/.local/Mkos/XFCEDOCK-Exp.tar.bz2
 echo "Config panel mate"
 wget -P $HOME/.local/Mkos https://github.com/zayronxio/script-Mkos/raw/master/Mate-panel/Mkos.layout && echo -e $PASSWD | sudo -S mv $HOME/.local/Mkos/Mkos.layout /usr/share/mate-panel/layouts/Mkos.layout
+###config for plugin dock
+echo -e "[user]\npinned=/usr/share/applications/thunar.desktop;/usr/share/applications/Lightpad.desktop\nforceIconSize=true\niconSize=48\nindicatorStyle=1\nindicatorColor=rgb(31,161,255)\ninactiveColor=rgb(31,161,255)" | cat > $HOME/.config/xfce4/panel/docklike-1.rc
+
 
 #####Agregando Iconos#######
 if zenity --question --text "You want to add mac os style icons" 

@@ -1,0 +1,13 @@
+/configver 2
+/panels [<1>]
+/panels/dark-mode false
+/panels/panel-1/autohide-behavior uint32 1
+/panels/panel-1/background-rgba [<0.95333299999999999>, <0.98671500000000001>, <1.0>, <0.23357700000000001>]
+/panels/panel-1/background-style uint32 1
+/panels/panel-1/disable-struts true
+/panels/panel-1/length uint32 1
+/panels/panel-1/plugin-ids [<1>]
+/panels/panel-1/position 'p=10;x=959;y=1054'
+/panels/panel-1/position-locked true
+/panels/panel-1/size uint32 48
+/plugins/plugin-1 'docklike'
