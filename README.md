@@ -2,6 +2,8 @@
 little bash script to modify the interface of xubuntu 21.04, and make it look like macos
 
 
+[![](https://raw.githubusercontent.com/zayronxio/script-Mkos/master/preview/01.png)](https://raw.githubusercontent.com/zayronxio/script-Mkos/master/preview/01.png "Demo")
+
 ## Installation
 
 
