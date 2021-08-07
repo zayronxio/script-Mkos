@@ -1,4 +1,6 @@
 # Script-Mkos
+little bash script to modify the interface of xubuntu 21.04, and make it look like macos
+
 
 ## Installation
 
